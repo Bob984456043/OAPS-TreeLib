@@ -16,7 +16,7 @@ jobs:
           - "fd:50:4c:f8:54:2f:e7:fc:bd:8a:eb:8e:e5:02:5d:0d"
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run: pwd
-      - run: rsync -avce ssh service.py $SSH_USER@$SSH_IP:/data
+      - run: rsync -avzhe ssh service.py ubuntu@$139.199.58.80:/data
 
 workflows:
   main:
