@@ -6,18 +6,21 @@ orbs:
 jobs:
   build:
     docker:
-      image: circleci/python:3.7.1
-    working_directory: ~/treelib
-    executor: python/default
+      - image: circleci/python:3.6.8
+    
+      filters:
+        branches:
+          only: circleci-project-setup
+          
     steps:
+      - add_ssh_key:
+        fingerprints:
+        - 
       - checkout
-      - run:
-        name:
-      - run:
-          command: ./manage.py test
-          name: Test
+      - run: pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
+      - run: python service.py
 
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build
