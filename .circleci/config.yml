@@ -9,7 +9,7 @@ jobs:
       - image: circleci/python:3.6.8
           
     steps:
-      - add_ssh_key:
+      - add_ssh_keys:
           fingerprints:
           - "fd:50:4c:f8:54:2f:e7:fc:bd:8a:eb:8e:e5:02:5d:0d"
       - checkout
