@@ -8,9 +8,9 @@ jobs:
     docker:
       - image: circleci/python:3.6.8
     
-      filters:
-        branches:
-          only: circleci-project-setup
+    filters:
+      branches:
+        only: circleci-project-setup
           
     steps:
       - add_ssh_key:
