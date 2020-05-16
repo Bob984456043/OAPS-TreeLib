@@ -13,10 +13,10 @@ jobs:
           fingerprints:
           - "fd:50:4c:f8:54:2f:e7:fc:bd:8a:eb:8e:e5:02:5d:0d"
       - checkout
-      - run: docker
+      - run: cat /tmp/OAPS-TreeLib/Dockerfile
       - run: git clone https://github.com/Bob984456043/OAPS-TreeLib.git
       - run: cd OAPS-TreeLib
-      - run: pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
+      - run: sudo pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
       - run: python service.py
 
 workflows:
