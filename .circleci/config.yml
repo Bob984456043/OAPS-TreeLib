@@ -5,11 +5,13 @@ orbs:
 
 jobs:
   build:
+    docker:
+    - image: circleci/python:3.6.8
           
     steps:
       - checkout
       - run: sudo apt-get install systemd
-      - run: docker
+      - run: 
       - run: systemctl start docker
       - run: sudo docker build -t treelib . 
 
