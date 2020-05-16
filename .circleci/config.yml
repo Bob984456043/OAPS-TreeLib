@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get install systemd
-      - run: 
+      - run: sudo docker ps
       - run: systemctl start docker
       - run: sudo docker build -t treelib . 
 
