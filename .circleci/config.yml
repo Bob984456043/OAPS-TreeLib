@@ -19,7 +19,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build:
-        filters:
-          branches:
-            only: daily-build
+      - build
