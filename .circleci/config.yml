@@ -9,14 +9,20 @@ jobs:
       - image: circleci/python:3.6.8
           
     steps:
+      - checkout
+      - run: sudo apt-get update && sudo apt-get install rsync
       - add_ssh_keys:
           fingerprints:
           - "fd:50:4c:f8:54:2f:e7:fc:bd:8a:eb:8e:e5:02:5d:0d"
-      - checkout
-      - run: git clone https://github.com/Bob984456043/OAPS-TreeLib.git
-      - run: cd OAPS-TreeLib
-      - run: sudo pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
-      - run: python service.py
+      - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
+      - deploy:
+          name: deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              rsync -avce ssh build $SSH_USER@$SSH_IP:/data/corki-ui-web/
+            else
+              echo "Not master branch, dry run only"
+            fi
 
 workflows:
   main:
